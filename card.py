@@ -23,9 +23,10 @@ class Card:
             self.life -= damage
 
     def get_stats_str(self):
-        base_stats_str = f'{self.attack}, {self.life}'
+        base_stats_str = f'({self.attack}, {self.life})'
         if self.taunt:
-            base_stats_str = '[' + base_stats_str + ']'
+            base_stats_str = base_stats_str.replace('(', '[')
+            base_stats_str = base_stats_str.replace(')', ']')
     
         if self.divine_shield:
             base_stats_str = base_stats_str + '*'
