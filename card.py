@@ -1,13 +1,14 @@
 from random import randint
 
 class Card:
-    def __init__(self, attack, start_life, taunt=False):
+    def __init__(self, name, attack, start_life, taunt=False):
+        self.name = name
         self.attack = attack
         self.life = start_life
         self.start_life = start_life
         self.is_alive = True
         self.taunt = taunt
-    
+
     def make_attack(self, card):
         card.take_damage(self.attack)
         self.take_damage(card.attack)
