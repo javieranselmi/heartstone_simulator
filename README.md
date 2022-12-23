@@ -19,7 +19,7 @@ Note: When cards with Taunt are displayed on the Verbose mode when running a gam
 ## Divine Shield
 If you want a card to have Divine Shield (if the card is attacking or if it receives damage it will ignore damage taken but still inflict its attack as damage to the attacking card, and lose its shield), instantiate the Card with divine_shield=True. It is an optional parameter and the default is False.
 
-Note: When cards with Divine Shield are displayed on the Verbose mode when running a game, they will be shown wiht a * after its card representation. For example a (3,3) with Divine Shield will be shown as (3,3)*.
+Note: When cards with Divine Shield are displayed on the Verbose mode when running a game, they will be shown with a * after its card representation. For example a (3,3) with Divine Shield will be shown as (3,3)*.
 
 ## Cards with attack = 0 
 Card with attck = 0 will not work well. The feature is pending. Don't add cards with attack = 0.
