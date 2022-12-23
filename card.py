@@ -8,6 +8,7 @@ class Card:
         self.start_life = start_life
         self.is_alive = True
         self.taunt = taunt
+        self.divine_shield = divine_shield
 
     def make_attack(self, card):
             card.take_damage(self.attack)

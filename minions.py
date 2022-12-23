@@ -8,7 +8,7 @@ minions = [
     Card("micromummy", 1, 2),  #rb
     Card("mini-myrmidon", 3, 3),
     Card("picky eater", 2, 3),  #?
-    Card("pupbot", 2, 1),  #ds
+    Card("pupbot", 2, 1, divine_shield=True),
     Card("geomancer", 3, 1),
     Card("red whelp", 2, 2),
     Card("anomally", 1, 4),
