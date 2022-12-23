@@ -16,5 +16,8 @@ If you want a card to have Taunt (has to be attacked first before other cards ca
 
 Note: When cards with Taunt are displayed on the Verbose mode when running a game, they will be shown wiht brackets. For example a (3,3) with Taunt will be shown as [3,3]
 
+## Cards with attack = 0 
+Card with attck = 0 will not work well. The feature is pending. Don't add cards with attack = 0.
+
 ## To run simulation
 python3 simulation1.py
