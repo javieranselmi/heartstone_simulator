@@ -1,11 +1,12 @@
 from random import randint
 
 class Card:
-    def __init__(self, attack, start_life):
+    def __init__(self, attack, start_life, taunt=False):
         self.attack = attack
         self.life = start_life
         self.start_life = start_life
         self.is_alive = True
+        self.taunt = taunt
     
     def make_attack(self, card):
         card.take_damage(self.attack)
@@ -19,4 +20,7 @@ class Card:
             self.life -= damage
 
     def get_stats_str(self):
-        return f'({self.attack}, {self.life})'
+        if self.taunt:
+            return f'[{self.attack}, {self.life}]'
+        else:
+            return f'({self.attack}, {self.life})'

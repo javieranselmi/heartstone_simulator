@@ -11,6 +11,15 @@ class Player:
     def alive_cards(self):
         return [c for c in self.cards if c.is_alive ]
 
+    def taunt_cards(self):
+        return [c for c in self.alive_cards() if c.taunt ]
+    
+    def defending_cards(self):
+        if len(self.taunt_cards()) > 0:
+            return self.taunt_cards()
+        else:
+            return self.alive_cards()
+
     def has_lost(self):
         return len(self.alive_cards()) == 0
 
@@ -24,8 +33,8 @@ class Player:
         if self.has_lost():
             return None
         else:
-            index = randint(0, len(self.alive_cards()) - 1)
-            return self.alive_cards()[index]
+            index = randint(0, len(self.defending_cards()) - 1)
+            return self.defending_cards()[index]
 
     def board_string(self):
         return '  ||  '.join([ c.get_stats_str() for c in self.alive_cards() ])

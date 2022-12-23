@@ -11,5 +11,10 @@ This way you can perform statistical analysis on cards.
 ## Example
 See simulation1.py to see a test in which I prove that statistically a player that puts its strongest cards first has more chance to win the game.
 
+## Taunt
+If you want a card to have Taunt (has to be attacked first before other cards can be attacked), instantiate the Card with taunt=True. It is an optional parameter and the default is False.
+
+Note: When cards with Taunt are displayed on the Verbose mode when running a game, they will be shown wiht brackets. For example a (3,3) with Taunt will be shown as [3,3]
+
 ## To run simulation
 python3 simulation1.py
