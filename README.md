@@ -21,15 +21,12 @@ If you want a card to have Divine Shield (if the card is attacking or if it rece
 
 Note: When cards with Divine Shield are displayed on the Verbose mode when running a game, they will be shown with a * after its card representation. For example a (3,3) with Divine Shield will be shown as (3,3)*.
 
-<<<<<<< Updated upstream
-=======
 ## Deathrattle
 If you want a card to have Deathrattle (deathrattle means it does something when it dies), instantiate the Card with deathrattle=<Card>. A Card instance must be passed in this parameter. It is an optional parameter and the default is None.
 The only deathrattle currerntly supported is spawning another card.
 
 Note: When cards with Deathrattle are displayed on the Verbose mode when running a game, they will be shown with a DTH<> after its card representation, with the spawned card inside the <>. For example a (3,3) with a Deathrattle that spawns a (2,2) will be shown as (3,3)DTH<(2,2)>.
 
->>>>>>> Stashed changes
 ## Cards with attack = 0
 Card with attack = 0 will not work well. The feature is pending. Don't add cards with attack = 0.
 
