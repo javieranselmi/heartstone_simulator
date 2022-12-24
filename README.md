@@ -1,6 +1,6 @@
 ## Summary
 
-I built a heartstone simulator. You can use the Game class to simulate a game. You need to build an array of Card instances first, and then create two Player instances. You can assign a name and the array of Cards to the Player.
+I built a Heartstone simulator. You can use the Game class to simulate a game. You need to build an array of Card instances first, and then create two Player instances. You can assign a name and the array of Cards to the Player.
 
 After that, you can create a Game and assign the two Players as player_1 and player_2.
 Optionally, you can set verbose=True to see the progress of the game.
@@ -16,13 +16,13 @@ If you want a card to have Taunt (has to be attacked first before other cards ca
 
 Note: When cards with Taunt are displayed on the Verbose mode when running a game, they will be shown with brackets. For example a (3,3) with Taunt will be shown as [3,3].
 
-## Divine Shield
+## Devine Shield
 If you want a card to have Divine Shield (if the card is attacking or if it receives damage it will ignore damage taken but still inflict its attack as damage to the attacking card, and lose its shield), instantiate the Card with divine_shield=True. It is an optional parameter and the default is False.
 
 Note: When cards with Divine Shield are displayed on the Verbose mode when running a game, they will be shown with a * after its card representation. For example a (3,3) with Divine Shield will be shown as (3,3)*.
 
-## Cards with attack = 0 
-Card with attck = 0 will not work well. The feature is pending. Don't add cards with attack = 0.
+## Cards with attack = 0
+Card with attack = 0 will not work well. The feature is pending. Don't add cards with attack = 0.
 
 ## To run simulation
 python3 simulation1.py

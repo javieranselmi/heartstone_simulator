@@ -1,14 +1,16 @@
 from random import randint
 
 class Card:
-    def __init__(self, name, attack, start_life, taunt=False, divine_shield=False):
+    def __init__(self, name, attack, hit_points,
+    taunt=False, divine_shield=False, deathrattle=None):
         self.name = name
         self.attack = attack
-        self.life = start_life
-        self.start_life = start_life
+        self.life = hit_points
+        self.hit_points = hit_points
         self.is_alive = True
         self.taunt = taunt
         self.divine_shield = divine_shield
+        self._deathrattle = deathrattle
 
     def make_attack(self, card):
             card.take_damage(self.attack)
@@ -33,3 +35,6 @@ class Card:
             base_stats_str = base_stats_str + '*'
 
         return base_stats_str
+
+    def deathrattle(self):
+        return Card(**self._deathrattle)
