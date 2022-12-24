@@ -9,12 +9,14 @@ class MultigameSimulator:
         self.player1 = player1
         self.player2 = player2
 
+
     def run_all_games(self):
         for x in range(1, self.amount_of_games + 1):
             # print("Playing game", x)
             result = Game(self.player1, self.player2, verbose=False).start_game()
             self.games_results.append(result)
         self.print_statistics()
+
 
     def print_statistics(self):
         games_won_player_1 = 0
@@ -35,17 +37,16 @@ class MultigameSimulator:
         print(f"{ties} games ended in tie ({ ties * 100/self.amount_of_games}% of games).")
 
 
-        
-        
-
     def has_lost(self):
         return len(self.alive_cards()) == 0
+
 
     def get_next_attacker(self):
         if self.has_lost():
             return None
-        else: 
+        else:
             return self.alive_cards()[0]
+
 
     def get_next_defender(self):
         if self.has_lost():
@@ -54,6 +55,6 @@ class MultigameSimulator:
             index = randint(0, len(self.alive_cards()) - 1)
             return self.alive_cards()[index]
 
+
     def board_string(self):
         return '  ||  '.join([ c.get_stats_str() for c in self.alive_cards() ])
-

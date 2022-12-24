@@ -3,47 +3,37 @@ from random import randint
 class Game:
 
     def __init__(self, player_1, player_2, verbose=False):
-        self.player_1 = player_1
-        self.player_2 = player_2
-        self.turn = randint(0, 1) + 1
+        self.players = [player_1, player_2]
+        self.turn = 0
+        self.decider = randint(0, 1)
         self.game_status = 'ongoing'
         self.winner = None
         self.verbose = verbose
 
-    def switch_turns(self):
-        self.turn = 2 if self.turn == 1 else 1
+    def play_turn(self):
+        self.turn += 1
+        self.decider = (self.decider + 1) % 2
 
-    def make_attack(self):
-
-        if (self.turn == 1):
-            attacker_player =  self.player_1
-            defender_player =  self.player_2
-        else:
-            attacker_player =  self.player_2
-            defender_player =  self.player_1
-
-        attacker = attacker_player.get_next_attacker()
-        defender = defender_player.get_next_defender()
+        attacker_player = self.players[self.decider]
+        defender_player = self.players[(self.decider + 1) % 2]
 
         if self.verbose:
-            self.print_board_with_attack(
-                attacker_player.name, 
-                defender_player.name, 
-                attacker.get_stats_str(), 
-                defender.get_stats_str()
-            )
+            print(f"{attacker_player.name} will attack {defender_player.name}")
+            self.print_board()
 
-        attacker.make_attack(defender)
-        self.switch_turns()
+        attacker_player.attack(defender_player)
 
-        if attacker_player.has_lost() and defender_player.has_lost():
+        self.check_game_status()
+
+    def  check_game_status(self):
+        if self.players[0].has_lost() and self.players[1].has_lost():
             self.game_status = 'tie'
-        elif attacker_player.has_lost():
+        elif self.players[0].has_lost():
             self.game_status = 'winner'
-            self.winner = defender_player.name
-        elif defender_player.has_lost():
+            self.winner = self.players[1].name
+        elif self.players[1].has_lost():
             self.game_status = 'winner'
-            self.winner = attacker_player.name
+            self.winner = self.players[0].name
 
     def print_board_with_attack(self, attacker_name, defender_name, attacker_card_stats, defender_card_stats):
         self.print_board()
@@ -51,8 +41,8 @@ class Game:
         print('\n')
 
     def print_board(self):
-        print(f"Player 1 ({self.player_1.name}) board: ", self.player_1.board_string())
-        print(f"Player 2 ({self.player_2.name}) board: ", self.player_2.board_string())
+        print(f"Player 1 ({self.players[0].name}) board: ", self.players[0].board_string())
+        print(f"Player 2 ({self.players[1].name}) board: ", self.players[1].board_string())
 
     def ended(self):
         return self.game_status in ["tie", "winner"]
@@ -61,22 +51,19 @@ class Game:
         print(f'Game ended in {self.game_status} and winner is {self.winner}')
 
     def game_reset(self):
-        self.player_1.reset()
-        self.player_2.reset()
-        
+        for player in self.players:
+            player.reset()
+
     def start_game(self):
-        play = self.make_attack()
-        round = 1
         while not self.ended():
             if self.verbose:
-                print(f"Playing round {round}:")
-            play = self.make_attack()
-            round +=1
+                print(f"\nPlaying round {self.turn}:")
+            play = self.play_turn()
 
         if self.verbose:
             print(f"Final board:")
             self.print_board()
             self.print_winner()
-        
+
         self.game_reset()
         return { "winner": self.winner, "game_status": self.game_status }

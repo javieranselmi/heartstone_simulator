@@ -4,8 +4,8 @@ from player import Player
 from multigame_simulator import MultigameSimulator
 import random
 
-
 # Step 1: Set the cards and their stats
+
 minion_pool = Minions()
 player1_cards = minion_pool.get_strongest_first_random_minion_set(3)
 player2_cards = minion_pool.get_random_minion_set(3)
@@ -17,6 +17,7 @@ player2 = Player("Javi", player2_cards)
 Game(player1,player2,verbose=True).print_board()
 
 # Step 3: Run the multigame simulator
+
 sim = MultigameSimulator(10000, player1, player2)
 sim.run_all_games()
 
