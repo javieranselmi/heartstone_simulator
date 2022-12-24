@@ -8,9 +8,7 @@ import random
 # Step 1: Set the cards and their stats
 minion_pool = Minions()
 player1_cards = minion_pool.get_strongest_first_random_minion_set(3)
-print(player1_cards)
 player2_cards = minion_pool.get_random_minion_set(3)
-print(player2_cards)
 
 # Step 2: Set the players and their names.
 player1 = Player("Fedex", player1_cards)
