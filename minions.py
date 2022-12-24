@@ -1,24 +1,34 @@
 from card import Card
+import random
 
-minions = [
-    { "name": "allycat", "attack":  1,   "hit_points": 1, "deathrattle": { "name": "tabycat", "attack":  1,   "hit_points": 1}},  #bc
-    { "name": "swabbie", "attack": 2,  "hit_points": 2},
-    { "name": "chroma", "attack": 1,  "hit_points": 4},
-    { "name": "imprisoner", "attack": 2, "hit_points": 2, "taunt": True, "deathrattle":{ "name": "imp", "attack":  1,   "hit_points": 1}},
-    { "name": "micromummy", "attack": 1, "hit_points": 2, "deathrattle": { "name": "rb micromummy", "attack":  1,   "hit_points": 1}},  #rb
-    { "name": "mini-myrmidon", "attack": 3,  "hit_points": 3},
-    { "name": "picky eater", "attack": 2,  "hit_points": 3},  #?
-    { "name": "pupbot", "attack": 2,  "hit_points": 1, "divine_shield": True},
-    { "name": "geomancer", "attack": 3,  "hit_points": 1},
-    { "name": "red whelp", "attack": 2,  "hit_points": 2},
-    { "name": "anomally", "attack": 1,  "hit_points": 4},
-    { "name": "rockpool", "attack": 2,  "hit_points": 3},
-    { "name": "scallywag", "attack": 3,  "hit_points": 1, "deathrattle": { "name": "pirate", "attack":  1,   "hit_points": 1}},
-    { "name": "hyena", "attack": 2,  "hit_points": 2},
-    { "name": "sellemental", "attack": 2,  "hit_points": 2},
-    { "name": "shell collector", "attack": 3,  "hit_points": 1},
-    { "name": "sun beaconer", "attack": 1,  "hit_points": 2},
-    { "name": "swamp striker", "attack": 1,  "hit_points": 4},
-    { "name": "wrath weaver", "attack": 1,  "hit_points":  3},
-    { "name": "Tavern Tipper", "attack": 2, "hit_points": 2},
-]
+class Minions:
+    def __init__(self):
+        self.minion_pool = [
+            Card("allycat",  1,  , deathrattle=Card("tabycat",1,1)),  #bc
+            Card("swabbie", 2, 2),
+            Card("chroma", 1, 4),
+            Card("imprisoner", 2, 2, taunt=True),
+            Card("micromummy", 1, 2, deathrattle=Card("micromummy", 1, 1)),  #rb
+            Card("mini-myrmidon", 3, 3),
+            Card("picky eater", 2, 3),  #?
+            Card("pupbot", 2, 1, divine_shield=True),
+            Card("geomancer", 3, 1),
+            Card("red whelp", 2, 2),
+            Card("anomally", 1, 4),
+            Card("rockpool", 2, 3),
+            Card("scallywag", 3, 1, deathrattle=Card("pirate",1,1)),
+            Card("hyena", 2, 2),
+            Card("sellemental", 2, 2),
+            Card("shell collector", 3, 1),
+            Card("sun beaconer", 1, 2),
+            Card("swamp striker", 1, 4),
+            Card("wrath weaver", 1, 3),
+            Card("Tavern Tipper", 2, 2),
+        ]
+
+    def get_random_minion_set(self, minions_count):
+        return [random.choice(self.minion_pool) for m in range(minions_count)]
+
+    def get_strongest_first_random_minion_set(self, minions_count):
+        return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack + m.hit_points, reverse=True)
+
