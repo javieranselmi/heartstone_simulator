@@ -10,7 +10,7 @@ class Card:
         self.is_alive = True
         self.taunt = taunt
         self.divine_shield = divine_shield
-        self._deathrattle = deathrattle
+        self.deathrattle = deathrattle
 
     def make_attack(self, card):
             card.take_damage(self.attack)
@@ -36,5 +36,4 @@ class Card:
 
         return base_stats_str
 
-    def deathrattle(self):
-        return Card(**self._deathrattle)
+

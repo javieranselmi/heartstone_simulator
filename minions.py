@@ -4,7 +4,7 @@ import random
 class Minions:
     def __init__(self):
         self.minion_pool = [
-            Card("allycat",  1,  , deathrattle=Card("tabycat",1,1)),  #bc
+            Card("allycat",  1, 1, deathrattle=Card("tabycat",1,1)),  #bc
             Card("swabbie", 2, 2),
             Card("chroma", 1, 4),
             Card("imprisoner", 2, 2, taunt=True),

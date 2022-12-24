@@ -11,8 +11,8 @@ player1_cards = minion_pool.get_strongest_first_random_minion_set(3)
 player2_cards = minion_pool.get_random_minion_set(3)
 
 # Step 2: Set the players and their names.
-# player1 = Player("Fedex", player1_cards)
-# player2 = Player("Javi", player2_cards)
+player1 = Player("Fedex", player1_cards)
+player2 = Player("Javi", player2_cards)
 
 Game(player1,player2,verbose=True).print_board()
 

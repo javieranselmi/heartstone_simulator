@@ -6,8 +6,8 @@ class Player:
 
     def __init__(self, name, cards):
         self.name = name
-        self.cards = [Card(**c) for c in cards]
-        self.initial_cards = cards
+        self.cards = cards
+        self.initial_cards = copy.deepcopy(cards)
 
     def alive_cards(self):
         return [c for c in self.cards if c.is_alive]
@@ -28,7 +28,7 @@ class Player:
         return '  ||  '.join([ c.get_stats_str() for c in self.alive_cards() ])
 
     def reset(self):
-        self.cards = [Card(**c) for c in self.initial_cards]
+        self.cards = copy.deepcopy(self.initial_cards)
 
     def attack(self, player):
         attacker = self.cards.pop(0)
@@ -39,10 +39,8 @@ class Player:
         if attacker.is_alive:
              self.cards.append(attacker)
         else:
-            # print(f"attacker died {attacker.name} {attacker.get_stats_str()}")
-            if attacker._deathrattle:
-                # print("deathrattle!")
-                self.cards.insert(0, attacker.deathrattle())
+            if attacker.deathrattle:
+                self.cards.insert(0, attacker.deathrattle)
 
 
     def defend(self, attacker):
@@ -57,8 +55,6 @@ class Player:
         attacker.make_attack(defender)
 
         if not defender.is_alive:
-            # print(f"defender died {defender.name} {defender.get_stats_str()}")
             self.cards.pop(index)
-            if defender._deathrattle:
-                # print("deathrattle!")
-                self.cards.insert(index, defender.deathrattle())
+            if defender.deathrattle:
+                self.cards.insert(index, defender.deathrattle)
