@@ -1,5 +1,6 @@
 from minions import Minions
 from game import Game
+from card import Card
 from player import Player
 from multigame_simulator import MultigameSimulator
 import random
