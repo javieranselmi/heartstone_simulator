@@ -34,6 +34,9 @@ class Card:
         if self.divine_shield:
             base_stats_str = base_stats_str + '*'
 
+        if self.deathrattle:
+            base_stats_str = base_stats_str + f'DTH<{self.deathrattle.get_stats_str()}>'
+
         return base_stats_str
 
 
