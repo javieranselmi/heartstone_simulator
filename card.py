@@ -36,7 +36,7 @@ class Card:
             base_stats_str = base_stats_str + '*'
 
         if self.poisonous:
-            base_stats_str = base_stats_str + f'P'
+            base_stats_str = base_stats_str + 'P'
 
         if self.deathrattle:
             base_stats_str = base_stats_str + f'DTH<{self.deathrattle.get_stats_str()}>'
