@@ -30,4 +30,4 @@ class Minions:
         return [random.choice(self.minion_pool) for m in range(minions_count)]
 
     def get_strongest_first_random_minion_set(self, minions_count):
-        return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack, reverse=True)
+        return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack + m.start_life, reverse=True)
