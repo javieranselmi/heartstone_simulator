@@ -2,7 +2,7 @@ from random import randint
 
 class Card:
     def __init__(self, name, attack, hit_points,
-    taunt=False, divine_shield=False, deathrattle=None):
+    taunt=False, divine_shield=False, poisonous=False, deathrattle=None):
         self.name = name
         self.attack = attack
         self.life = hit_points
@@ -11,15 +11,16 @@ class Card:
         self.taunt = taunt
         self.divine_shield = divine_shield
         self.deathrattle = deathrattle
+        self.poisonous = poisonous
 
     def make_attack(self, card):
-            card.take_damage(self.attack)
-            self.take_damage(card.attack)
+            card.take_damage(self.attack, self.poisonous)
+            self.take_damage(card.attack, card.poisonous)
 
-    def take_damage(self, damage):
+    def take_damage(self, damage, poison=False):
         if self.divine_shield:
             self.divine_shield = False
-        elif damage >= self.life:
+        elif damage >= self.life or poison:
             self.life = 0
             self.is_alive = False
         else:
@@ -33,6 +34,9 @@ class Card:
 
         if self.divine_shield:
             base_stats_str = base_stats_str + '*'
+
+        if self.poisonous:
+            base_stats_str = base_stats_str + 'P'
 
         if self.deathrattle:
             base_stats_str = base_stats_str + f'DTH<{self.deathrattle.get_stats_str()}>'

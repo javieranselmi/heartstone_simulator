@@ -27,6 +27,11 @@ The only deathrattle currerntly supported is spawning another card.
 
 Note: When cards with Deathrattle are displayed on the Verbose mode when running a game, they will be shown with a DTH<> after its card representation, with the spawned card inside the <>. For example a (3,3) with a Deathrattle that spawns a (2,2) will be shown as (3,3)DTH<(2,2)>.
 
+## Poisonous
+If you want a card to have Poisonous (poisonous means that it kills attacked card regardless of it's attack unless it has a divine shield), instantiate the Card with poisonous=True. It is an optional parameter and the default is False.
+
+Note: When cards with Poisonous are displayed on the Verbose mode when running a game, they will be shown with a P after its card representation. For example a (3,3) with Poisonous will be shown as (3,3)P.
+
 ## Cards with attack = 0
 Card with attack = 0 will not work well. The feature is pending. Don't add cards with attack = 0.
 
