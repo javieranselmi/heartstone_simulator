@@ -1,15 +1,16 @@
-from minions import minions
+from minions import Minions
 from game import Game
 from player import Player
 from multigame_simulator import MultigameSimulator
 import random
 
-minions_count = 3
 
 # Step 1: Set the cards and their stats
-player1_cards = [random.choice(minions) for m in range(minions_count)]
-player1_cards.sort(key= lambda m: m.attack, reverse=True)
-player2_cards = [random.choice(minions) for m in range(minions_count)]
+minion_pool = Minions()
+player1_cards = minion_pool.get_strongest_first_random_minion_set(3)
+print(player1_cards)
+player2_cards = minion_pool.get_random_minion_set(3)
+print(player2_cards)
 
 # Step 2: Set the players and their names.
 player1 = Player("Fedex", player1_cards)
