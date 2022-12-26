@@ -56,5 +56,5 @@ class MultigameSimulator:
             return self.alive_cards()[index]
 
 
-    def board_string(self):
+    def deck_string(self):
         return '  ||  '.join([ c.get_stats_str() for c in self.alive_cards() ])

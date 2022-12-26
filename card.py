@@ -3,6 +3,7 @@ from random import randint
 class Card:
     def __init__(self, name, attack, hit_points,
     taunt=False, divine_shield=False, poisonous=False, deathrattle=None):
+        self.id = None
         self.name = name
         self.attack = attack
         self.life = hit_points
@@ -26,8 +27,11 @@ class Card:
         else:
             self.life -= damage
 
-    def get_stats_str(self):
-        base_stats_str = f'({self.attack}, {self.life})'
+    def get_stats_str(self, debug=False):
+        if debug:
+            base_stats_str = f'({self.attack},{self.life}:{self.id})'
+        else:
+            base_stats_str = f'({self.attack},{self.life})'
         if self.taunt:
             base_stats_str = base_stats_str.replace('(', '[')
             base_stats_str = base_stats_str.replace(')', ']')
@@ -39,7 +43,7 @@ class Card:
             base_stats_str = base_stats_str + 'P'
 
         if self.deathrattle:
-            base_stats_str = base_stats_str + f'DTH<{self.deathrattle.get_stats_str()}>'
+            base_stats_str = base_stats_str + f'DTH<{self.deathrattle.get_description()}>'
 
         return base_stats_str
 

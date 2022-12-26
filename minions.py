@@ -1,14 +1,15 @@
 from card import Card
+from deathrattle.summon import Summon
 import random
 
 class Minions:
     def __init__(self):
         self.minion_pool = [
-            Card("allycat",  1, 1, deathrattle=Card("tabycat",1,1)),  #bc
+            Card("allycat",  1, 1, deathrattle=Summon(Card("tabycat",1,1))),  #bc
             Card("swabbie", 2, 2),
             Card("chroma", 1, 4),
             Card("imprisoner", 2, 2, taunt=True),
-            Card("micromummy", 1, 2, deathrattle=Card("micromummy", 1, 1)),  #rb
+            Card("micromummy", 1, 2, deathrattle=Summon(Card("micromummy", 1, 1))),  #rb
             Card("mini-myrmidon", 3, 3),
             Card("picky eater", 2, 3),  #?
             Card("pupbot", 2, 1, divine_shield=True),
@@ -16,7 +17,7 @@ class Minions:
             Card("red whelp", 2, 2),
             Card("anomally", 1, 4),
             Card("rockpool", 2, 3),
-            Card("scallywag", 3, 1, deathrattle=Card("pirate",1,1)),
+            Card("scallywag", 3, 1, deathrattle=Summon(Card("pirate",1,1))),
             Card("hyena", 2, 2),
             Card("sellemental", 2, 2),
             Card("shell collector", 3, 1),
@@ -34,6 +35,15 @@ class Minions:
     def get_highest_attack_first_random_minion_list(self, minions_count):
         return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack, reverse=True)
 
-    #deprecated
+    def get_card_list_by_name(self, name_array):
+        card_list = []
+        for name in name_array:
+            for minion in self.minion_pool:
+                if name == minion.name:
+                    card_list.append(minion)
+                    break
+        return card_list
+
     def get_strongest_first_random_minion_list(self, minions_count):
         return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack + m.hit_points, reverse=True)
+
