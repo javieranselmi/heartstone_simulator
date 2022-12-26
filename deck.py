@@ -1,4 +1,5 @@
 from random import randint
+from strategy import *
 import copy
 from card import Card
 
@@ -8,7 +9,6 @@ class Deck:
         self.max_size = 7
         self.cards = []
         self.initial_cards = []
-
         i = 1000
         for card in cards:
             new_card = copy.deepcopy(card)

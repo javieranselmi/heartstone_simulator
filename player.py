@@ -1,14 +1,15 @@
 from random import randint
-from strategy import *
+from strategy import Strategy
 import copy
 from card import Card
+from deck import Deck
 
 class Player:
 
 
-    def __init__(self, name, deck):
+    def __init__(self, name: str, deck: Deck, strategy: Strategy):
         self.name = name
-        self.deck = deck
+        self.deck = strategy.sort_cards(deck)
 
 
     def has_lost(self):
