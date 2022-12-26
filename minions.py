@@ -26,9 +26,14 @@ class Minions:
             Card("Tavern Tipper", 2, 2),
         ]
 
-    def get_random_minion_set(self, minions_count):
+
+    def get_random_minion_list(self, minions_count):
         return [random.choice(self.minion_pool) for m in range(minions_count)]
 
-    def get_strongest_first_random_minion_set(self, minions_count):
-        return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack + m.hit_points, reverse=True)
+    #deprecated
+    def get_highest_attack_first_random_minion_list(self, minions_count):
+        return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack, reverse=True)
 
+    #deprecated
+    def get_strongest_first_random_minion_list(self, minions_count):
+        return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack + m.hit_points, reverse=True)
