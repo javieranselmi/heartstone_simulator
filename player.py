@@ -1,15 +1,19 @@
 from random import randint
+from strategy import *
 import copy
 from card import Card
 
 class Player:
 
+
     def __init__(self, name, deck):
         self.name = name
         self.deck = deck
 
+
     def has_lost(self):
         return len(self.deck.alive_cards()) == 0
+
 
     def attack(self, player):
         attacker = self.deck.get_first()
@@ -33,5 +37,6 @@ class Player:
             index_of_defender = self.deck.remove(defender_minion)
             if defender_minion.deathrattle is not None:
                 defender_minion.deathrattle.execute(self.deck, index_of_defender)
+
 
 
