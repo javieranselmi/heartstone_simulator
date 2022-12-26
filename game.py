@@ -25,7 +25,7 @@ class Game:
 
         self.check_game_status()
 
-    def  check_game_status(self):
+    def check_game_status(self):
         if self.players[0].has_lost() and self.players[1].has_lost():
             self.game_status = 'tie'
         elif self.players[0].has_lost():
@@ -36,13 +36,13 @@ class Game:
             self.winner = self.players[0].name
 
     def print_board_with_attack(self, attacker_name, defender_name, attacker_card_stats, defender_card_stats):
-        self.print_board()
+        self.print_deck()
         print(f"{attacker_name} will attack with {attacker_card_stats} card to {defender_name}'s {defender_card_stats}")
         print('\n')
 
-    def print_board(self):
-        print(f"Player 1 ({self.players[0].name}) board: ", self.players[0].board_string())
-        print(f"Player 2 ({self.players[1].name}) board: ", self.players[1].board_string())
+    def print_board(self, debug=False):
+        print(f"Player 1 ({self.players[0].name}) deck: ", self.players[0].get_deck_string(debug))
+        print(f"Player 2 ({self.players[1].name}) deck: ", self.players[1].get_deck_string(debug))
 
     def ended(self):
         return self.game_status in ["tie", "winner"]
@@ -52,7 +52,7 @@ class Game:
 
     def game_reset(self):
         for player in self.players:
-            player.reset()
+            player.reset_deck()
 
     def start_game(self):
         while not self.ended():
