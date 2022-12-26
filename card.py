@@ -1,5 +1,3 @@
-from random import randint
-
 class Card:
     def __init__(self, name, attack, hit_points,
     taunt=False, divine_shield=False, poisonous=False, deathrattle=None):
@@ -46,5 +44,3 @@ class Card:
             base_stats_str = base_stats_str + f'DTH<{self.deathrattle.get_description()}>'
 
         return base_stats_str
-
-

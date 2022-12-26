@@ -31,10 +31,6 @@ class Minions:
     def get_random_minion_list(self, minions_count):
         return [random.choice(self.minion_pool) for m in range(minions_count)]
 
-    #deprecated
-    def get_highest_attack_first_random_minion_list(self, minions_count):
-        return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack, reverse=True)
-
     def get_card_list_by_name(self, name_array):
         card_list = []
         for name in name_array:
@@ -43,7 +39,3 @@ class Minions:
                     card_list.append(minion)
                     break
         return card_list
-
-    def get_strongest_first_random_minion_list(self, minions_count):
-        return sorted(self.get_random_minion_set(minions_count), key=lambda m: m.attack + m.hit_points, reverse=True)
-
