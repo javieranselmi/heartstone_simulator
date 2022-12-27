@@ -10,14 +10,12 @@ class Random(Strategy):
 
 class HighestAttackFirst(Strategy):
     def sort_cards(self, cards: list):
-        deck.cards = sorted(cards, key=lambda m: m.attack, reverse=True)
-        return deck
+        return sorted(cards, key=lambda m: m.attack, reverse=True)
 
 
 class GraterCombinedStatsFirst(Strategy):
     def sort_cards(self, cards: list):
-        deck.cards = sorted(cards, key=lambda m: m.attack + m.hit_points, reverse=True)
-        return deck
+        return sorted(cards, key=lambda m: m.attack + m.hit_points, reverse=True)
 
 RANDOM = Random()
 HIGHEST_ATTACK_FIRST = HighestAttackFirst()
