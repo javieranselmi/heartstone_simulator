@@ -15,7 +15,7 @@ class Player:
 
 
     def attack(self, player):
-        attacker = self.deck.get_first()
+        attacker = self.deck.get_attacker()
         player.defend(attacker)
 
         if not attacker.is_alive:
