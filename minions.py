@@ -2,6 +2,7 @@ from card import Card
 from deathrattle.summon import Summon
 import random
 import json
+import copy
 
 class Minions:
 
@@ -44,9 +45,13 @@ class Minions:
     def get_card_list_by_name(self, name_array):
         card_list = []
         for name in name_array:
+            self.get_card_by_name(name)
+        return card_list
+
+    def get_card_by_name(self, name):
             for minion in self.minion_pool:
                 if name == minion.name:
-                    card_list.append(minion)
-                    break
-        return card_list
+                    return copy.deepcopy(minion)
+
+    
         
