@@ -1,0 +1,284 @@
+{
+    "cards":
+    [
+        {
+            "level": 1,
+            "name": "allycat",
+            "attack": 1,
+            "hit_points": 1,
+            "deathrattle":
+            {
+                "type": "summon",
+                "card":
+                {
+                    "level": 1,
+                    "name": "tabycat",
+                    "attack": 1,
+                    "hit_points": 1
+                }
+            }
+        },
+        {
+            "level": 1,
+            "name": "swabbie",
+            "attack": 2,
+            "hit_points": 2
+        },
+        {
+            "level": 1,
+            "name": "chroma",
+            "attack": 1,
+            "hit_points": 4
+        },
+        {
+            "level": 1,
+            "name": "imprisoner",
+            "attack": 2,
+            "hit_points": 2,
+            "taunt": true
+        },
+        {
+            "level": 1,
+            "name": "micromummy",
+            "attack": 1,
+            "hit_points": 2,
+            "deathrattle":
+            {
+                "type": "summon",
+                "card":
+                {
+                    "level": 1,
+                    "name": "micromummy",
+                    "attack": 1,
+                    "hit_points": 1
+                }
+            }
+        },
+        {
+            "level": 1,
+            "name": "minimyrmidon",
+            "attack": 3,
+            "hit_points": 3
+        },
+        {
+            "level": 1,
+            "name": "picky_eater",
+            "attack": 2,
+            "hit_points": 3
+        },
+        {
+            "level": 1,
+            "name": "pupbot",
+            "attack": 2,
+            "hit_points": 1,
+            "divine_shield": true
+        },
+        {
+            "level": 1,
+            "name": "geomancer",
+            "attack": 3,
+            "hit_points": 1
+        },
+        {
+            "level": 1,
+            "name": "red_whelp",
+            "attack": 2,
+            "hit_points": 2
+        },
+        {
+            "level": 1,
+            "name": "anomally",
+            "attack": 1,
+            "hit_points": 4
+        },
+        {
+            "level": 1,
+            "name": "rockpool",
+            "attack": 2,
+            "hit_points": 3
+        },
+        {
+            "level": 1,
+            "name": "scallywag",
+            "attack": 3,
+            "hit_points": 1,
+            "deathrattle":
+            {
+                "type": "summon",
+                "card":
+                {
+                    "level": 1,
+                    "name": "pirate",
+                    "attack": 1,
+                    "hit_points": 1
+                }
+            }
+        },
+        {
+            "level": 1,
+            "name": "hyena",
+            "attack": 2,
+            "hit_points": 2
+        },
+        {
+            "level": 1,
+            "name": "sellemental",
+            "attack": 2,
+            "hit_points": 2
+        },
+        {
+            "level": 1,
+            "name": "shell_collector",
+            "attack": 3,
+            "hit_points": 1
+        },
+        {
+            "level": 1,
+            "name": "sun_beaconer",
+            "attack": 1,
+            "hit_points": 2
+        },
+        {
+            "level": 1,
+            "name": "swamp_striker",
+            "attack": 1,
+            "hit_points": 4
+        },
+        {
+            "level": 1,
+            "name": "wrath_weaver",
+            "attack": 1,
+            "hit_points": 3
+        },
+        {
+            "level": 1,
+            "name": "tavern_tipper",
+            "attack": 2,
+            "hit_points": 2
+        },
+        {
+            "level": 2,
+            "name": "harvest_golem",
+            "attack": 2,
+            "hit_points": 3,
+            "deathrattle":
+            {
+                "type": "summon",
+                "card":
+                {
+                    "level": 1,
+                    "name": "damaged_golem",
+                    "attack": 2,
+                    "hit_points": 1
+                }
+            }
+        },
+        {
+            "level": 2,
+            "name": "imprisoner",
+            "attack": 3,
+            "hit_points": 3,
+            "deathrattle":
+            {
+                "type": "summon",
+                "card":
+                {
+                    "level": 1,
+                    "name": "imp",
+                    "attack": 1,
+                    "hit_points": 1
+                }
+            }
+        },
+        {
+            "level": 2,
+            "name": "sewer_rat",
+            "attack": 1,
+            "hit_points": 4,
+            "deathrattle":
+            {
+                "type": "summon",
+                "card":
+                {
+                    "level": 1,
+                    "name": "turtle",
+                    "attack": 2,
+                    "hit_points": 3,
+                    "taunt": true
+                }
+            }
+        },
+        {
+            "level": 3,
+            "name": "houndmaster",
+            "attack": 4,
+            "hit_points": 3
+        },
+        {
+            "level": 3,
+            "name": "khadgar",
+            "attack": 2,
+            "hit_points": 2
+        },
+        {
+            "level": 3,
+            "name": "monstrous_macaw",
+            "attack": 5,
+            "hit_points": 3
+        },
+        {
+            "level": 4,
+            "name": "defender argus",
+            "attack": 3,
+            "hit_points": 3
+        },
+        {
+            "level": 4,
+            "name": "goldgrubber",
+            "attack": 4,
+            "hit_points": 4
+        },
+        {
+            "level": 4,
+            "name": "majordomo_executus",
+            "attack": 6,
+            "hit_points": 3
+        },
+        {
+            "level": 5,
+            "name": "king_bagurgle",
+            "attack": 6,
+            "hit_points": 3
+        },
+        {
+            "level": 5,
+            "name": "mama_bear",
+            "attack": 5,
+            "hit_points": 5
+        },
+        {
+            "level": 5,
+            "name": "murozond",
+            "attack": 5,
+            "hit_points": 5
+        },
+        {
+            "level": 6,
+            "name": "nadina_the_red",
+            "attack": 6,
+            "hit_points": 7
+        },
+        {
+            "level": 6,
+            "name": "zapp_slywick",
+            "attack": 7,
+            "hit_points": 10
+        },
+        {
+            "level": 6,
+            "name": "charlga",
+            "attack": 4,
+            "hit_points": 4
+        }
+    ]
+}
