@@ -2,8 +2,8 @@ from random import randint
 
 class Game:
 
-    def __init__(self, player_1, player_2, verbose=False):
-        self.players = [player_1, player_2]
+    def __init__(self, players, verbose=False):
+        self.players = players
         self.turn = 0
         self.decider = randint(0, 1)
         self.game_status = 'ongoing'
@@ -58,7 +58,7 @@ class Game:
         while not self.ended():
             if self.verbose:
                 print(f"\nPlaying round {self.turn}:")
-            play = self.play_turn()
+            self.play_turn()
 
         if self.verbose:
             print(f"Final board:")

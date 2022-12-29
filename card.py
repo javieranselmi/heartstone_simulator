@@ -13,9 +13,10 @@ class Card:
         self.deathrattle = deathrattle
         self.poisonous = poisonous
 
+
     def make_attack(self, card):
-            card.take_damage(self.attack, self.poisonous)
-            self.take_damage(card.attack, card.poisonous)
+        card.take_damage(self.attack, self.poisonous)
+        self.take_damage(card.attack, card.poisonous)
 
     def take_damage(self, damage, poison=False):
         if self.divine_shield:

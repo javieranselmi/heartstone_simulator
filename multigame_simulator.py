@@ -13,7 +13,7 @@ class MultigameSimulator:
     def run_all_games(self):
         for x in range(1, self.amount_of_games + 1):
             # print("Playing game", x)
-            result = Game(self.player1, self.player2, verbose=False).start_game()
+            result = Game([self.player1, self.player2], verbose=False).start_game()
             self.games_results.append(result)
         self.print_statistics()
 
