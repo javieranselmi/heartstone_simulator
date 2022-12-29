@@ -1,41 +1,48 @@
 from card import Card
 from deathrattle.summon import Summon
 import random
+import json
+import copy
 
 class Minions:
+
+    def card_from_json(self, card_json):
+
+        if "deathrattle" in card_json:
+            deathrattle_type = card_json["deathrattle"]["type"]
+            if deathrattle_type == "summon":
+                card = card_json["deathrattle"]["card"]
+                deathrattle = Summon(self.card_from_json(card))
+                del card_json["deathrattle"]
+            else:
+                raise Exception("Deathrattle not implemented")
+        else:
+            deathrattle = None
+        return Card(**card_json, deathrattle=deathrattle)
+
+
     def __init__(self):
-        self.minion_pool = [
-            Card("allycat",  1, 1, deathrattle=Summon(Card("tabycat",1,1))),  #bc
-            Card("swabbie", 2, 2),
-            Card("chroma", 1, 4),
-            Card("imprisoner", 2, 2, taunt=True, deathrattle=Summon(Card("imp", 1, 1))),
-            Card("micromummy", 1, 2, deathrattle=Summon(Card("micromummy", 1, 1))),  #rb
-            Card("mini-myrmidon", 3, 3),
-            Card("picky eater", 2, 3),  #?
-            Card("pupbot", 2, 1, divine_shield=True),
-            Card("geomancer", 3, 1),
-            Card("red whelp", 2, 2),
-            Card("anomally", 1, 4),
-            Card("rockpool", 2, 3),
-            Card("scallywag", 3, 1, deathrattle=Summon(Card("pirate",1,1))),
-            Card("hyena", 2, 2),
-            Card("sellemental", 2, 2),
-            Card("shell collector", 3, 1),
-            Card("sun beaconer", 1, 2),
-            Card("swamp striker", 1, 4),
-            Card("wrath weaver", 1, 3),
-            Card("Tavern Tipper", 2, 2),
-        ]
+
+        f = open('minions.json')
+        minion_data = json.loads(f.read())
+        self.minion_pool = [ self.card_from_json(card_json) for card_json in minion_data['cards'] ]
+        f.close()
 
 
-    def get_random_minion_list(self, minions_count):
-        return [random.choice(self.minion_pool) for m in range(minions_count)]
+    def get_random_minion_list(self, minions_count, max_level=None):
+        minion_pool = [m for m in self.minion_pool if m.level <= max_level] if max_level else self.minion_pool
+        return [random.choice(minion_pool) for m in range(minions_count)]
 
     def get_card_list_by_name(self, name_array):
         card_list = []
         for name in name_array:
+            self.get_card_by_name(name)
+        return card_list
+
+    def get_card_by_name(self, name):
             for minion in self.minion_pool:
                 if name == minion.name:
-                    card_list.append(minion)
-                    break
-        return card_list
+                    return copy.deepcopy(minion)
+
+    
+        

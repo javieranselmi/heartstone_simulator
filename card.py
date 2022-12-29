@@ -1,8 +1,9 @@
 class Card:
-    def __init__(self, name, attack, hit_points,
-                 taunt=False, divine_shield=False, poisonous=False, deathrattle=None):
+    def __init__(self, name, level, attack, hit_points,
+    taunt=False, divine_shield=False, poisonous=False, deathrattle=None):
         self.id = None
         self.name = name
+        self.level = level
         self.attack = attack
         self.life = hit_points
         self.hit_points = hit_points
