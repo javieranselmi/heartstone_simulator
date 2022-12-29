@@ -8,7 +8,7 @@ class Minions:
             Card("allycat",  1, 1, deathrattle=Summon(Card("tabycat",1,1))),  #bc
             Card("swabbie", 2, 2),
             Card("chroma", 1, 4),
-            Card("imprisoner", 2, 2, taunt=True),
+            Card("imprisoner", 2, 2, taunt=True, deathrattle=Summon(Card("imp", 1, 1))),
             Card("micromummy", 1, 2, deathrattle=Summon(Card("micromummy", 1, 1))),  #rb
             Card("mini-myrmidon", 3, 3),
             Card("picky eater", 2, 3),  #?
