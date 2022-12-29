@@ -18,7 +18,6 @@ class Minions:
                 raise Exception("Deathrattle not implemented")
         else:
             deathrattle = None
-
         return Card(**card_json, deathrattle=deathrattle)
 
 
