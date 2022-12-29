@@ -8,26 +8,18 @@ class Minions:
 
     def card_from_json(self, card_json):
 
-        attack = card_json["attack"]
-        hit_points = card_json["hit_points"]
-        level = card_json["level"]
-        name = card_json["name"]
-
-        taunt = card_json["taunt"] if "taunt" in card_json else False
-        divine_shield = card_json["divine_shield"] if "divine_shield" in card_json else False
-        poisonous = card_json["poisonous"] if "poisonous" in card_json else False
-
         if "deathrattle" in card_json:
             deathrattle_type = card_json["deathrattle"]["type"]
             if deathrattle_type == "summon":
                 card = card_json["deathrattle"]["card"]
                 deathrattle = Summon(self.card_from_json(card))
+                del card_json["deathrattle"]
             else:
                 raise Exception("Deathrattle not implemented")
         else:
             deathrattle = None
 
-        return Card(name, level, attack, hit_points, taunt, divine_shield, poisonous, deathrattle)
+        return Card(**card_json, deathrattle=deathrattle)
 
 
     def __init__(self):
