@@ -1,6 +1,6 @@
 class Card:
     def __init__(self, name, attack, hit_points,
-    taunt=False, divine_shield=False, poisonous=False, deathrattle=None):
+                 taunt=False, divine_shield=False, poisonous=False, deathrattle=None):
         self.id = None
         self.name = name
         self.attack = attack
@@ -13,8 +13,8 @@ class Card:
         self.poisonous = poisonous
 
     def make_attack(self, card):
-            card.take_damage(self.attack, self.poisonous)
-            self.take_damage(card.attack, card.poisonous)
+        card.take_damage(self.attack, self.poisonous)
+        self.take_damage(card.attack, card.poisonous)
 
     def take_damage(self, damage, poison=False):
         if self.divine_shield:

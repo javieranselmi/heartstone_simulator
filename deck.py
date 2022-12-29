@@ -1,14 +1,15 @@
 from random import randint
-from strategy import *
 import copy
 from card import Card
 
-class Deck:
 
+class Deck:
     def __init__(self, cards):
         self.max_size = 7
         self.cards = []
         self.initial_cards = []
+        self.attacker_index = 0
+
         i = 1000
         for card in cards:
             new_card = copy.deepcopy(card)
@@ -22,7 +23,7 @@ class Deck:
 
     def taunt_cards(self):
         return [c for c in self.alive_cards() if c.taunt]
-    
+
     def find_card_index_by_id(self, searched_card_id):
         index = 0
         for card in self.cards:
@@ -50,13 +51,28 @@ class Deck:
         card.id = id
         self.insert_by_index(card, at_index)
 
-    def remove(self, card):
+    def remove(self, card: Card) -> int:
         card_index = self.find_card_index_by_id(card.id)
         del self.cards[card_index]
+
+        if card_index < self.attacker_index:
+            self.attacker_index -= 1
+        if self.attacker_index == card_index and len(self.cards) > 0:
+            self.attacker_index %= len(self.cards)
+
         return card_index
 
-    def get_first(self):
-        return self.cards[0]
+    def get_next_attacker(self) -> Card:
+        if self.has_lost():
+            raise Exception("the player has lost")
+
+        attacker = None
+        while not attacker:
+            if self.cards[self.attacker_index].is_alive:
+                attacker = self.cards[self.attacker_index]
+            self.attacker_index = (self.attacker_index + 1) % len(self.cards)
+
+        return attacker
 
     def defending_cards(self):
         if len(self.taunt_cards()) > 0:
@@ -64,9 +80,9 @@ class Deck:
         else:
             return self.alive_cards()
 
-    def get_defender(self):
+    def get_defender(self) -> Card:
         index = randint(0, len(self.defending_cards()) - 1)
-        return self.defending_cards()[index] 
+        return self.defending_cards()[index]
 
     def has_lost(self):
         return len(self.alive_cards()) == 0
