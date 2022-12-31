@@ -18,8 +18,10 @@ player2 = Player("Javi", player2_deck, GRATER_COMBINED_STATS_FIRST)
 Game([player1, player2], verbose=True).print_board()
 
 # Step 3: Run the multigame simulator
-sim1 = MultigameSimulator(10000, player1, player2)
-sim1.run_all_games()
+#sim1 = MultigameSimulator(10000, player1, player2)
+#sim1.run_all_games()
 
+from shop_inventory import ShopInventory
+ShopInventory().print_inventory()
 # OPTIONAL: If you want to only play one game, and see the output, uncomment the next line.
 # Game([player1, player2], verbose=True).start_game()

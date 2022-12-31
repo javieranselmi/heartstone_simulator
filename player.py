@@ -6,6 +6,7 @@ class Player:
     def __init__(self, name: str, cards: list, strategy: Strategy):
         self.name = name
         self.deck = Deck(strategy.sort_cards(cards))
+        self.hand = Hand([])
 
     def has_lost(self):
         return len(self.deck.alive_cards()) == 0

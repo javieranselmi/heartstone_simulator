@@ -46,3 +46,7 @@ class Card:
             base_stats_str = base_stats_str + f'DTH<{self.deathrattle.get_description()}>'
 
         return base_stats_str
+
+    def cost(self):
+        return 3
+

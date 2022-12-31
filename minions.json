@@ -32,13 +32,6 @@
         },
         {
             "level": 1,
-            "name": "imprisoner",
-            "attack": 2,
-            "hit_points": 2,
-            "taunt": true
-        },
-        {
-            "level": 1,
             "name": "micromummy",
             "attack": 1,
             "hit_points": 2,
