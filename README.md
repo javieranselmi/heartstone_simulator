@@ -1,6 +1,6 @@
 ## Summary
 
-I built a Heartstone simulator. You can use the Game class to simulate a game. You need to build an array of Card instances first, and then create two Player instances. You can assign a name and the array of Cards to the Player.
+Along with Federico Extramiana (github.com/fed-ext) built a Heartstone simulator. You can use the Game class to simulate a game. You need to build an array of Card instances first, and then create two Player instances. You can assign a name and the array of Cards to the Player.
 
 After that, you can create a Game and assign the two Players as player_1 and player_2.
 Optionally, you can set verbose=True to see the progress of the game.
