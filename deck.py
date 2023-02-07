@@ -1,7 +1,7 @@
 from random import randint
 import copy
 from card import Card
-
+from game_event import GameEvent
 
 class Deck:
     def __init__(self, cards):
@@ -23,56 +23,43 @@ class Deck:
 
     def taunt_cards(self):
         return [c for c in self.alive_cards() if c.taunt]
-
-    def find_card_index_by_id(self, searched_card_id):
-        index = 0
-        for card in self.cards:
-            if card.id == searched_card_id:
-                return index
-            index += 1
-
-    def get_new_id(self):
-        if len([ c.id for c in self.cards ]) > 0:
-            return max([ c.id for c in self.cards ]) + 1
-        else:
-            return 1000
-
-    def insert_by_index(self, card, index):
-        if index < 0:
-            # Don't do anything
-            pass
-        elif index > self.max_size:
-           pass
-        else:
-            self.cards.insert(index, card)
+    
+    def has_card(self, card:Card):
+        return card in self.cards
+    
+    def react_to_event(self, event: GameEvent):
+        target_card = event.target
+        if self.has_card(target_card):
+            target_card.react_to_event(event)
+        for card in [c for c in self.cards if c != target_card ]:
+            card.react_to_event(event)
 
     def add(self, card, at_index):
-        id = self.get_new_id()
-        card.id = id
-        self.insert_by_index(card, at_index)
+        if len(self.cards) <= self.max_size - 1:
+            self.cards = self.cards[:at_index] + [card] + self.cards[at_index:]
 
-    def remove(self, card: Card) -> int:
-        card_index = self.find_card_index_by_id(card.id)
-        del self.cards[card_index]
+    def remove(self, card: Card):
+        self.cards.remove(card)
+        
+    def index_of(self, card: Card):
+        return self.cards.index(card)
 
-        if card_index < self.attacker_index:
-            self.attacker_index -= 1
-        if self.attacker_index == card_index and len(self.cards) > 0:
-            self.attacker_index %= len(self.cards)
-
-        return card_index
-
+    def has_minion(self, minion):
+        return minion in self.cards
+    
     def get_next_attacker(self) -> Card:
         if self.has_lost():
             raise Exception("the player has lost")
-
-        attacker = None
-        while not attacker:
-            if self.cards[self.attacker_index].is_alive:
-                attacker = self.cards[self.attacker_index]
-            self.attacker_index = (self.attacker_index + 1) % len(self.cards)
-
-        return attacker
+        if self.attacker_index + 1 > len(self.cards):
+            return self.cards[-1]
+        else:
+            return self.cards[self.attacker_index]
+    
+    def increase_attacker_index(self):
+        if self.attacker_index > len(self.cards):
+                self.attacker_index = (self.attacker_index + 1) % len(self.cards)
+        else:
+            self.attacker_index += 1
 
     def defending_cards(self):
         if len(self.taunt_cards()) > 0:
@@ -88,7 +75,10 @@ class Deck:
         return len(self.alive_cards()) == 0
 
     def get_deck_string(self, debug=False):
-        return '  ||  '.join([ c.get_stats_str(debug) for c in self.alive_cards() ])
+        return '  ||  '.join([ c.get_stats_str(debug) for c in self.cards ])
+    
+    def __str__(self) -> str:
+        return self.get_deck_string()
 
     def reset(self):
         self.cards = copy.deepcopy(self.initial_cards)

@@ -1,5 +1,4 @@
 from card import Card
-from deathrattle.summon import Summon
 import random
 import json
 import copy
@@ -12,7 +11,7 @@ class Minions:
             deathrattle_type = card_json["deathrattle"]["type"]
             if deathrattle_type == "summon":
                 card = card_json["deathrattle"]["card"]
-                deathrattle = Summon(self.card_from_json(card))
+                deathrattle = self.card_from_json(card)
                 del card_json["deathrattle"]
             else:
                 raise Exception("Deathrattle not implemented")
